@@ -1,67 +1,20 @@
-; ModuleID = '/Users/hrimamohammed/Desktop/personal/ura-lang/tests/projects/ura-tcp-server/cmd/server.ura'
-source_filename = "/Users/hrimamohammed/Desktop/personal/ura-lang/tests/projects/ura-tcp-server/cmd/server.ura"
+; ModuleID = '/Users/hrimamohammed/Desktop/personal/ura-lang/tests/projects/ura-tcp-server/basic/utils.ura'
+source_filename = "/Users/hrimamohammed/Desktop/personal/ura-lang/tests/projects/ura-tcp-server/basic/utils.ura"
 target triple = "arm64-apple-macosx16.0.0"
 
 %struct.String = type { i8*, i32, i32 }
 %struct.SockAddr = type { i8* }
-%struct.Server = type { i32, i32, i8*, i8* }
 
 @STR0 = private unnamed_addr constant [1 x i8] zeroinitializer, align 1
 @STR1 = private unnamed_addr constant [9 x i8] c"%H:%M:%S\00", align 1
-@STR2 = private unnamed_addr constant [9 x i8] c"\1B[0;90m[\00", align 1
-@STR3 = private unnamed_addr constant [7 x i8] c"]\1B[0m \00", align 1
-@STR4 = private unnamed_addr constant [6 x i8] c"\1B[0m \00", align 1
-@STR5 = private unnamed_addr constant [2 x i8] c"\0A\00", align 1
-@STR6 = private unnamed_addr constant [8 x i8] c"\1B[0;32m\00", align 1
-@STR7 = private unnamed_addr constant [92 x i8] c"  \E2\96\88\E2\96\88\E2\96\88\E2\96\88\E2\96\88\E2\96\88\E2\95\97\E2\96\88\E2\96\88\E2\95\97  \E2\96\88\E2\96\88\E2\95\97 \E2\96\88\E2\96\88\E2\96\88\E2\96\88\E2\96\88\E2\95\97 \E2\96\88\E2\96\88\E2\96\88\E2\96\88\E2\96\88\E2\96\88\E2\96\88\E2\96\88\E2\95\97\0A\00", align 1
-@STR8 = private unnamed_addr constant [98 x i8] c" \E2\96\88\E2\96\88\E2\95\94\E2\95\90\E2\95\90\E2\95\90\E2\95\90\E2\95\9D\E2\96\88\E2\96\88\E2\95\91  \E2\96\88\E2\96\88\E2\95\91\E2\96\88\E2\96\88\E2\95\94\E2\95\90\E2\95\90\E2\96\88\E2\96\88\E2\95\97\E2\95\9A\E2\95\90\E2\95\90\E2\96\88\E2\96\88\E2\95\94\E2\95\90\E2\95\90\E2\95\9D\0A\00", align 1
-@STR9 = private unnamed_addr constant [80 x i8] c" \E2\96\88\E2\96\88\E2\95\91     \E2\96\88\E2\96\88\E2\96\88\E2\96\88\E2\96\88\E2\96\88\E2\96\88\E2\95\91\E2\96\88\E2\96\88\E2\96\88\E2\96\88\E2\96\88\E2\96\88\E2\96\88\E2\95\91   \E2\96\88\E2\96\88\E2\95\91   \0A\00", align 1
-@STR10 = private unnamed_addr constant [80 x i8] c" \E2\96\88\E2\96\88\E2\95\91     \E2\96\88\E2\96\88\E2\95\94\E2\95\90\E2\95\90\E2\96\88\E2\96\88\E2\95\91\E2\96\88\E2\96\88\E2\95\94\E2\95\90\E2\95\90\E2\96\88\E2\96\88\E2\95\91   \E2\96\88\E2\96\88\E2\95\91   \0A\00", align 1
-@STR11 = private unnamed_addr constant [82 x i8] c" \E2\95\9A\E2\96\88\E2\96\88\E2\96\88\E2\96\88\E2\96\88\E2\96\88\E2\95\97\E2\96\88\E2\96\88\E2\95\91  \E2\96\88\E2\96\88\E2\95\91\E2\96\88\E2\96\88\E2\95\91  \E2\96\88\E2\96\88\E2\95\91   \E2\96\88\E2\96\88\E2\95\91   \0A\00", align 1
-@STR12 = private unnamed_addr constant [80 x i8] c"  \E2\95\9A\E2\95\90\E2\95\90\E2\95\90\E2\95\90\E2\95\90\E2\95\9D\E2\95\9A\E2\95\90\E2\95\9D  \E2\95\9A\E2\95\90\E2\95\9D\E2\95\9A\E2\95\90\E2\95\9D  \E2\95\9A\E2\95\90\E2\95\9D   \E2\95\9A\E2\95\90\E2\95\9D   \0A\00", align 1
-@STR13 = private unnamed_addr constant [5 x i8] c"\1B[0m\00", align 1
-@STR14 = private unnamed_addr constant [112 x i8] c"\1B[0;90m\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\1B[0m\0A\00", align 1
-@STR15 = private unnamed_addr constant [64 x i8] c"\1B[0;32m  URA Chat Server  \1B[0;90m\E2\94\82\1B[0m port \1B[0;33m17000\1B[0m\0A\00", align 1
-@STR16 = private unnamed_addr constant [113 x i8] c"\1B[0;90m\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\E2\94\80\1B[0m\0A\0A\00", align 1
-@STR17 = private unnamed_addr constant [32 x i8] c"failed to create server socket\0A\00", align 1
-@STR18 = private unnamed_addr constant [52 x i8] c"\1B[0;35mWelcome to URA Secure Server\0AType /help\0A\1B[0m\00", align 1
-@STR19 = private unnamed_addr constant [8 x i8] c"\1B[0;31m\00", align 1
-@STR20 = private unnamed_addr constant [9 x i8] c"[server]\00", align 1
-@STR21 = private unnamed_addr constant [20 x i8] c"client disconnected\00", align 1
-@STR22 = private unnamed_addr constant [6 x i8] c"/help\00", align 1
-@STR23 = private unnamed_addr constant [37 x i8] c"Commands: /help /time /whoami /exit\0A\00", align 1
-@STR24 = private unnamed_addr constant [6 x i8] c"/time\00", align 1
-@STR25 = private unnamed_addr constant [8 x i8] c"/whoami\00", align 1
-@STR26 = private unnamed_addr constant [38 x i8] c"You are connected to URA TCP Engine.\0A\00", align 1
-@STR27 = private unnamed_addr constant [6 x i8] c"/exit\00", align 1
-@STR28 = private unnamed_addr constant [17 x i8] c"Session closed.\0A\00", align 1
-@STR29 = private unnamed_addr constant [6 x i8] c"\0D\1B[2K\00", align 1
-@STR30 = private unnamed_addr constant [8 x i8] c"\1B[0;36m\00", align 1
-@STR31 = private unnamed_addr constant [9 x i8] c"[client]\00", align 1
-@STR32 = private unnamed_addr constant [23 x i8] c"\1B[0;32m[server]\1B[0m > \00", align 1
-@STR33 = private unnamed_addr constant [23 x i8] c"\1B[0;32m[server]\1B[0m > \00", align 1
-@STR34 = private unnamed_addr constant [23 x i8] c"\1B[0;32m[server]\1B[0m > \00", align 1
-@STR35 = private unnamed_addr constant [8 x i8] c"\1B[0;31m\00", align 1
-@STR36 = private unnamed_addr constant [9 x i8] c"[server]\00", align 1
-@STR37 = private unnamed_addr constant [12 x i8] c"bind failed\00", align 1
-@STR38 = private unnamed_addr constant [8 x i8] c"\1B[0;32m\00", align 1
-@STR39 = private unnamed_addr constant [9 x i8] c"[server]\00", align 1
-@STR40 = private unnamed_addr constant [27 x i8] c"listening on port 17000...\00", align 1
-@STR41 = private unnamed_addr constant [8 x i8] c"\1B[0;32m\00", align 1
-@STR42 = private unnamed_addr constant [9 x i8] c"[server]\00", align 1
-@STR43 = private unnamed_addr constant [17 x i8] c"client connected\00", align 1
 
 declare i32 @write(i32, i8*, i32)
-
-declare i32 @read(i32, i8*, i32)
 
 declare i8* @calloc(i64, i64)
 
 declare i8* @realloc(i8*, i32)
 
 declare void @free(i8*)
-
-declare void @exit(i32)
 
 declare i32 @atoi(i8*)
 
@@ -1717,20 +1670,6 @@ declare i8* @localtime(i64*)
 
 declare i32 @strftime(i8*, i32, i8*, i8*)
 
-declare i32 @socket(i32, i32, i32)
-
-declare i32 @bind(i32, i8*, i32)
-
-declare i32 @listen(i32, i32)
-
-declare i32 @accept(i32, i8*, i8*)
-
-declare i32 @close(i32)
-
-declare i32 @setsockopt(i32, i32, i32, i8*, i32)
-
-declare i32 @fork()
-
 define void @log(i8* %msg) !dbg !160 {
 entry:
   %msg1 = alloca i8*, align 8, !dbg !161
@@ -1763,533 +1702,105 @@ entry:
   ret i8* %buf3, !dbg !167
 }
 
-define void @log_ts(i8* %color, i8* %tag, i8* %msg) !dbg !168 {
+define void @SockAddr.init(%struct.SockAddr* %self) !dbg !168 {
 entry:
-  %color1 = alloca i8*, align 8, !dbg !169
-  %tag2 = alloca i8*, align 8, !dbg !169
-  %msg3 = alloca i8*, align 8, !dbg !169
-  %tbuf = alloca i8*, align 8, !dbg !169
-  store i8* %color, i8** %color1, align 8, !dbg !169
-  store i8* %tag, i8** %tag2, align 8, !dbg !169
-  store i8* %msg, i8** %msg3, align 8, !dbg !169
-  store i8* null, i8** %tbuf, align 8, !dbg !169
-  %get_time = call i8* @get_time(), !dbg !170
-  store i8* %get_time, i8** %tbuf, align 8, !dbg !170
-  call void @log(i8* getelementptr inbounds ([9 x i8], [9 x i8]* @STR2, i32 0, i32 0)), !dbg !171
-  %tbuf4 = load i8*, i8** %tbuf, align 8, !dbg !172
-  call void @log(i8* %tbuf4), !dbg !172
-  call void @log(i8* getelementptr inbounds ([7 x i8], [7 x i8]* @STR3, i32 0, i32 0)), !dbg !173
-  %color5 = load i8*, i8** %color1, align 8, !dbg !174
-  call void @log(i8* %color5), !dbg !174
-  %tag6 = load i8*, i8** %tag2, align 8, !dbg !175
-  call void @log(i8* %tag6), !dbg !175
-  call void @log(i8* getelementptr inbounds ([6 x i8], [6 x i8]* @STR4, i32 0, i32 0)), !dbg !176
-  %msg7 = load i8*, i8** %msg3, align 8, !dbg !177
-  call void @log(i8* %msg7), !dbg !177
-  call void @log(i8* getelementptr inbounds ([2 x i8], [2 x i8]* @STR5, i32 0, i32 0)), !dbg !178
-  %tbuf8 = load i8*, i8** %tbuf, align 8, !dbg !179
-  call void @free(i8* %tbuf8), !dbg !179
-  ret void, !dbg !179
+  %self1 = alloca %struct.SockAddr*, align 8, !dbg !169
+  store %struct.SockAddr* %self, %struct.SockAddr** %self1, align 8, !dbg !169
+  %self2 = load %struct.SockAddr*, %struct.SockAddr** %self1, align 8, !dbg !169
+  %data = getelementptr %struct.SockAddr, %struct.SockAddr* %self2, i32 0, i32 0, !dbg !169
+  %heap = call i8* @calloc(i64 16, i64 1), !dbg !169
+  store i8* %heap, i8** %data, align 8, !dbg !169
+  %self3 = load %struct.SockAddr*, %struct.SockAddr** %self1, align 8, !dbg !170
+  %data4 = getelementptr %struct.SockAddr, %struct.SockAddr* %self3, i32 0, i32 0, !dbg !170
+  %DOT = load i8*, i8** %data4, align 8, !dbg !170
+  %ACCESS = getelementptr i8, i8* %DOT, i32 0, !dbg !170
+  store i8 16, i8* %ACCESS, align 1, !dbg !170
+  %self5 = load %struct.SockAddr*, %struct.SockAddr** %self1, align 8, !dbg !171
+  %data6 = getelementptr %struct.SockAddr, %struct.SockAddr* %self5, i32 0, i32 0, !dbg !171
+  %DOT7 = load i8*, i8** %data6, align 8, !dbg !171
+  %ACCESS8 = getelementptr i8, i8* %DOT7, i32 1, !dbg !171
+  store i8 2, i8* %ACCESS8, align 1, !dbg !171
+  ret void, !dbg !171
 }
 
-define void @SockAddr.init(%struct.SockAddr* %self) !dbg !180 {
+define void @SockAddr.set_port(i32 %port, %struct.SockAddr* %self) !dbg !172 {
 entry:
-  %self1 = alloca %struct.SockAddr*, align 8, !dbg !181
-  store %struct.SockAddr* %self, %struct.SockAddr** %self1, align 8, !dbg !181
-  %self2 = load %struct.SockAddr*, %struct.SockAddr** %self1, align 8, !dbg !181
-  %data = getelementptr %struct.SockAddr, %struct.SockAddr* %self2, i32 0, i32 0, !dbg !181
-  %heap = call i8* @calloc(i64 16, i64 1), !dbg !181
-  store i8* %heap, i8** %data, align 8, !dbg !181
-  %self3 = load %struct.SockAddr*, %struct.SockAddr** %self1, align 8, !dbg !182
-  %data4 = getelementptr %struct.SockAddr, %struct.SockAddr* %self3, i32 0, i32 0, !dbg !182
-  %DOT = load i8*, i8** %data4, align 8, !dbg !182
-  %ACCESS = getelementptr i8, i8* %DOT, i32 0, !dbg !182
-  store i8 16, i8* %ACCESS, align 1, !dbg !182
-  %self5 = load %struct.SockAddr*, %struct.SockAddr** %self1, align 8, !dbg !183
-  %data6 = getelementptr %struct.SockAddr, %struct.SockAddr* %self5, i32 0, i32 0, !dbg !183
-  %DOT7 = load i8*, i8** %data6, align 8, !dbg !183
-  %ACCESS8 = getelementptr i8, i8* %DOT7, i32 1, !dbg !183
-  store i8 2, i8* %ACCESS8, align 1, !dbg !183
-  ret void, !dbg !183
+  %port1 = alloca i32, align 4, !dbg !173
+  %self2 = alloca %struct.SockAddr*, align 8, !dbg !173
+  store i32 %port, i32* %port1, align 4, !dbg !173
+  store %struct.SockAddr* %self, %struct.SockAddr** %self2, align 8, !dbg !173
+  %self3 = load %struct.SockAddr*, %struct.SockAddr** %self2, align 8, !dbg !174
+  %data = getelementptr %struct.SockAddr, %struct.SockAddr* %self3, i32 0, i32 0, !dbg !174
+  %DOT = load i8*, i8** %data, align 8, !dbg !174
+  %ACCESS = getelementptr i8, i8* %DOT, i32 2, !dbg !174
+  %port4 = load i32, i32* %port1, align 4, !dbg !174
+  %RSHIFT = ashr i32 %port4, 8, !dbg !174
+  %as = trunc i32 %RSHIFT to i8, !dbg !174
+  store i8 %as, i8* %ACCESS, align 1, !dbg !174
+  %self5 = load %struct.SockAddr*, %struct.SockAddr** %self2, align 8, !dbg !175
+  %data6 = getelementptr %struct.SockAddr, %struct.SockAddr* %self5, i32 0, i32 0, !dbg !175
+  %DOT7 = load i8*, i8** %data6, align 8, !dbg !175
+  %ACCESS8 = getelementptr i8, i8* %DOT7, i32 3, !dbg !175
+  %port9 = load i32, i32* %port1, align 4, !dbg !175
+  %BAND = and i32 %port9, 255, !dbg !175
+  %as10 = trunc i32 %BAND to i8, !dbg !175
+  store i8 %as10, i8* %ACCESS8, align 1, !dbg !175
+  ret void, !dbg !175
 }
 
-define void @SockAddr.set_port(i32 %port, %struct.SockAddr* %self) !dbg !184 {
+define void @SockAddr.set_ip(i32 %a, i32 %b, i32 %c, i32 %d, %struct.SockAddr* %self) !dbg !176 {
 entry:
-  %port1 = alloca i32, align 4, !dbg !185
-  %self2 = alloca %struct.SockAddr*, align 8, !dbg !185
-  store i32 %port, i32* %port1, align 4, !dbg !185
-  store %struct.SockAddr* %self, %struct.SockAddr** %self2, align 8, !dbg !185
-  %self3 = load %struct.SockAddr*, %struct.SockAddr** %self2, align 8, !dbg !186
-  %data = getelementptr %struct.SockAddr, %struct.SockAddr* %self3, i32 0, i32 0, !dbg !186
-  %DOT = load i8*, i8** %data, align 8, !dbg !186
-  %ACCESS = getelementptr i8, i8* %DOT, i32 2, !dbg !186
-  %port4 = load i32, i32* %port1, align 4, !dbg !186
-  %RSHIFT = ashr i32 %port4, 8, !dbg !186
-  %as = trunc i32 %RSHIFT to i8, !dbg !186
-  store i8 %as, i8* %ACCESS, align 1, !dbg !186
-  %self5 = load %struct.SockAddr*, %struct.SockAddr** %self2, align 8, !dbg !187
-  %data6 = getelementptr %struct.SockAddr, %struct.SockAddr* %self5, i32 0, i32 0, !dbg !187
-  %DOT7 = load i8*, i8** %data6, align 8, !dbg !187
-  %ACCESS8 = getelementptr i8, i8* %DOT7, i32 3, !dbg !187
-  %port9 = load i32, i32* %port1, align 4, !dbg !187
-  %BAND = and i32 %port9, 255, !dbg !187
-  %as10 = trunc i32 %BAND to i8, !dbg !187
-  store i8 %as10, i8* %ACCESS8, align 1, !dbg !187
-  ret void, !dbg !187
+  %a1 = alloca i32, align 4, !dbg !177
+  %b2 = alloca i32, align 4, !dbg !177
+  %c3 = alloca i32, align 4, !dbg !177
+  %d4 = alloca i32, align 4, !dbg !177
+  %self5 = alloca %struct.SockAddr*, align 8, !dbg !177
+  store i32 %a, i32* %a1, align 4, !dbg !177
+  store i32 %b, i32* %b2, align 4, !dbg !177
+  store i32 %c, i32* %c3, align 4, !dbg !177
+  store i32 %d, i32* %d4, align 4, !dbg !177
+  store %struct.SockAddr* %self, %struct.SockAddr** %self5, align 8, !dbg !177
+  %self6 = load %struct.SockAddr*, %struct.SockAddr** %self5, align 8, !dbg !178
+  %data = getelementptr %struct.SockAddr, %struct.SockAddr* %self6, i32 0, i32 0, !dbg !178
+  %DOT = load i8*, i8** %data, align 8, !dbg !178
+  %ACCESS = getelementptr i8, i8* %DOT, i32 4, !dbg !178
+  %a7 = load i32, i32* %a1, align 4, !dbg !178
+  %as = trunc i32 %a7 to i8, !dbg !178
+  store i8 %as, i8* %ACCESS, align 1, !dbg !178
+  %self8 = load %struct.SockAddr*, %struct.SockAddr** %self5, align 8, !dbg !179
+  %data9 = getelementptr %struct.SockAddr, %struct.SockAddr* %self8, i32 0, i32 0, !dbg !179
+  %DOT10 = load i8*, i8** %data9, align 8, !dbg !179
+  %ACCESS11 = getelementptr i8, i8* %DOT10, i32 5, !dbg !179
+  %b12 = load i32, i32* %b2, align 4, !dbg !179
+  %as13 = trunc i32 %b12 to i8, !dbg !179
+  store i8 %as13, i8* %ACCESS11, align 1, !dbg !179
+  %self14 = load %struct.SockAddr*, %struct.SockAddr** %self5, align 8, !dbg !180
+  %data15 = getelementptr %struct.SockAddr, %struct.SockAddr* %self14, i32 0, i32 0, !dbg !180
+  %DOT16 = load i8*, i8** %data15, align 8, !dbg !180
+  %ACCESS17 = getelementptr i8, i8* %DOT16, i32 6, !dbg !180
+  %c18 = load i32, i32* %c3, align 4, !dbg !180
+  %as19 = trunc i32 %c18 to i8, !dbg !180
+  store i8 %as19, i8* %ACCESS17, align 1, !dbg !180
+  %self20 = load %struct.SockAddr*, %struct.SockAddr** %self5, align 8, !dbg !181
+  %data21 = getelementptr %struct.SockAddr, %struct.SockAddr* %self20, i32 0, i32 0, !dbg !181
+  %DOT22 = load i8*, i8** %data21, align 8, !dbg !181
+  %ACCESS23 = getelementptr i8, i8* %DOT22, i32 7, !dbg !181
+  %d24 = load i32, i32* %d4, align 4, !dbg !181
+  %as25 = trunc i32 %d24 to i8, !dbg !181
+  store i8 %as25, i8* %ACCESS23, align 1, !dbg !181
+  ret void, !dbg !181
 }
 
-define void @SockAddr.set_ip(i32 %a, i32 %b, i32 %c, i32 %d, %struct.SockAddr* %self) !dbg !188 {
+define void @SockAddr.delete(%struct.SockAddr* %self) !dbg !182 {
 entry:
-  %a1 = alloca i32, align 4, !dbg !189
-  %b2 = alloca i32, align 4, !dbg !189
-  %c3 = alloca i32, align 4, !dbg !189
-  %d4 = alloca i32, align 4, !dbg !189
-  %self5 = alloca %struct.SockAddr*, align 8, !dbg !189
-  store i32 %a, i32* %a1, align 4, !dbg !189
-  store i32 %b, i32* %b2, align 4, !dbg !189
-  store i32 %c, i32* %c3, align 4, !dbg !189
-  store i32 %d, i32* %d4, align 4, !dbg !189
-  store %struct.SockAddr* %self, %struct.SockAddr** %self5, align 8, !dbg !189
-  %self6 = load %struct.SockAddr*, %struct.SockAddr** %self5, align 8, !dbg !190
-  %data = getelementptr %struct.SockAddr, %struct.SockAddr* %self6, i32 0, i32 0, !dbg !190
-  %DOT = load i8*, i8** %data, align 8, !dbg !190
-  %ACCESS = getelementptr i8, i8* %DOT, i32 4, !dbg !190
-  %a7 = load i32, i32* %a1, align 4, !dbg !190
-  %as = trunc i32 %a7 to i8, !dbg !190
-  store i8 %as, i8* %ACCESS, align 1, !dbg !190
-  %self8 = load %struct.SockAddr*, %struct.SockAddr** %self5, align 8, !dbg !191
-  %data9 = getelementptr %struct.SockAddr, %struct.SockAddr* %self8, i32 0, i32 0, !dbg !191
-  %DOT10 = load i8*, i8** %data9, align 8, !dbg !191
-  %ACCESS11 = getelementptr i8, i8* %DOT10, i32 5, !dbg !191
-  %b12 = load i32, i32* %b2, align 4, !dbg !191
-  %as13 = trunc i32 %b12 to i8, !dbg !191
-  store i8 %as13, i8* %ACCESS11, align 1, !dbg !191
-  %self14 = load %struct.SockAddr*, %struct.SockAddr** %self5, align 8, !dbg !192
-  %data15 = getelementptr %struct.SockAddr, %struct.SockAddr* %self14, i32 0, i32 0, !dbg !192
-  %DOT16 = load i8*, i8** %data15, align 8, !dbg !192
-  %ACCESS17 = getelementptr i8, i8* %DOT16, i32 6, !dbg !192
-  %c18 = load i32, i32* %c3, align 4, !dbg !192
-  %as19 = trunc i32 %c18 to i8, !dbg !192
-  store i8 %as19, i8* %ACCESS17, align 1, !dbg !192
-  %self20 = load %struct.SockAddr*, %struct.SockAddr** %self5, align 8, !dbg !193
-  %data21 = getelementptr %struct.SockAddr, %struct.SockAddr* %self20, i32 0, i32 0, !dbg !193
-  %DOT22 = load i8*, i8** %data21, align 8, !dbg !193
-  %ACCESS23 = getelementptr i8, i8* %DOT22, i32 7, !dbg !193
-  %d24 = load i32, i32* %d4, align 4, !dbg !193
-  %as25 = trunc i32 %d24 to i8, !dbg !193
-  store i8 %as25, i8* %ACCESS23, align 1, !dbg !193
-  ret void, !dbg !193
-}
-
-define void @SockAddr.delete(%struct.SockAddr* %self) !dbg !194 {
-entry:
-  %self1 = alloca %struct.SockAddr*, align 8, !dbg !195
-  store %struct.SockAddr* %self, %struct.SockAddr** %self1, align 8, !dbg !195
-  %self2 = load %struct.SockAddr*, %struct.SockAddr** %self1, align 8, !dbg !196
-  %data = getelementptr %struct.SockAddr, %struct.SockAddr* %self2, i32 0, i32 0, !dbg !196
-  %DOT = load i8*, i8** %data, align 8, !dbg !196
-  call void @free(i8* %DOT), !dbg !196
-  %self3 = load %struct.SockAddr*, %struct.SockAddr** %self1, align 8, !dbg !196
-  ret void, !dbg !196
-}
-
-define void @banner() !dbg !197 {
-entry:
-  call void @log(i8* getelementptr inbounds ([8 x i8], [8 x i8]* @STR6, i32 0, i32 0)), !dbg !198
-  call void @log(i8* getelementptr inbounds ([92 x i8], [92 x i8]* @STR7, i32 0, i32 0)), !dbg !199
-  call void @log(i8* getelementptr inbounds ([98 x i8], [98 x i8]* @STR8, i32 0, i32 0)), !dbg !200
-  call void @log(i8* getelementptr inbounds ([80 x i8], [80 x i8]* @STR9, i32 0, i32 0)), !dbg !201
-  call void @log(i8* getelementptr inbounds ([80 x i8], [80 x i8]* @STR10, i32 0, i32 0)), !dbg !202
-  call void @log(i8* getelementptr inbounds ([82 x i8], [82 x i8]* @STR11, i32 0, i32 0)), !dbg !203
-  call void @log(i8* getelementptr inbounds ([80 x i8], [80 x i8]* @STR12, i32 0, i32 0)), !dbg !204
-  call void @log(i8* getelementptr inbounds ([5 x i8], [5 x i8]* @STR13, i32 0, i32 0)), !dbg !205
-  call void @log(i8* getelementptr inbounds ([112 x i8], [112 x i8]* @STR14, i32 0, i32 0)), !dbg !206
-  call void @log(i8* getelementptr inbounds ([64 x i8], [64 x i8]* @STR15, i32 0, i32 0)), !dbg !207
-  call void @log(i8* getelementptr inbounds ([113 x i8], [113 x i8]* @STR16, i32 0, i32 0)), !dbg !208
-  ret void, !dbg !208
-}
-
-define void @Server.init(%struct.Server* %self) !dbg !209 {
-entry:
-  %self1 = alloca %struct.Server*, align 8, !dbg !210
-  store %struct.Server* %self, %struct.Server** %self1, align 8, !dbg !210
-  %self2 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !210
-  %fd = getelementptr %struct.Server, %struct.Server* %self2, i32 0, i32 0, !dbg !210
-  %socket = call i32 @socket(i32 2, i32 1, i32 0), !dbg !211
-  store i32 %socket, i32* %fd, align 4, !dbg !211
-  br label %if.start, !dbg !211
-
-if.start:                                         ; preds = %entry
-  %self3 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !211
-  %fd4 = getelementptr %struct.Server, %struct.Server* %self3, i32 0, i32 0, !dbg !211
-  %DOT = load i32, i32* %fd4, align 4, !dbg !211
-  %LT = icmp slt i32 %DOT, 0, !dbg !211
-  br i1 %LT, label %if.then, label %if.end, !dbg !211
-
-if.end:                                           ; preds = %if.then, %if.start
-  %self5 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !212
-  %client_fd = getelementptr %struct.Server, %struct.Server* %self5, i32 0, i32 1, !dbg !212
-  store i32 0, i32* %client_fd, align 4, !dbg !212
-  %self6 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !212
-  %buf = getelementptr %struct.Server, %struct.Server* %self6, i32 0, i32 2, !dbg !212
-  %heap = call i8* @calloc(i64 1024, i64 1), !dbg !212
-  store i8* %heap, i8** %buf, align 8, !dbg !212
-  %self7 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !212
-  %rbuf = getelementptr %struct.Server, %struct.Server* %self7, i32 0, i32 3, !dbg !212
-  %heap8 = call i8* @calloc(i64 1024, i64 1), !dbg !212
-  store i8* %heap8, i8** %rbuf, align 8, !dbg !212
-  ret void, !dbg !212
-
-if.then:                                          ; preds = %if.start
-  call void @log(i8* getelementptr inbounds ([32 x i8], [32 x i8]* @STR17, i32 0, i32 0)), !dbg !213
-  call void @exit(i32 1), !dbg !212
-  br label %if.end, !dbg !212
-}
-
-define void @Server.set_reuse(%struct.Server* %self) !dbg !214 {
-entry:
-  %self1 = alloca %struct.Server*, align 8, !dbg !215
-  %opt = alloca i8*, align 8, !dbg !215
-  store %struct.Server* %self, %struct.Server** %self1, align 8, !dbg !215
-  store i8* null, i8** %opt, align 8, !dbg !215
-  %stack = alloca [4 x i8], align 1, !dbg !215
-  %stack2 = getelementptr [4 x i8], [4 x i8]* %stack, i32 0, i32 0, !dbg !215
-  store i8* %stack2, i8** %opt, align 8, !dbg !215
-  %opt3 = load i8*, i8** %opt, align 8, !dbg !216
-  %ACCESS = getelementptr i8, i8* %opt3, i32 0, !dbg !216
-  store i8 1, i8* %ACCESS, align 1, !dbg !216
-  %self4 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !217
-  %fd = getelementptr %struct.Server, %struct.Server* %self4, i32 0, i32 0, !dbg !217
-  %DOT = load i32, i32* %fd, align 4, !dbg !217
-  %opt5 = load i8*, i8** %opt, align 8, !dbg !217
-  %setsockopt = call i32 @setsockopt(i32 %DOT, i32 65535, i32 4, i8* %opt5, i32 4), !dbg !217
-  %self6 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !218
-  %fd7 = getelementptr %struct.Server, %struct.Server* %self6, i32 0, i32 0, !dbg !218
-  %DOT8 = load i32, i32* %fd7, align 4, !dbg !218
-  %opt9 = load i8*, i8** %opt, align 8, !dbg !218
-  %setsockopt10 = call i32 @setsockopt(i32 %DOT8, i32 65535, i32 512, i8* %opt9, i32 4), !dbg !218
-  ret void, !dbg !218
-}
-
-define void @Server.handle_client(%struct.Server* %self) !dbg !219 {
-entry:
-  %self1 = alloca %struct.Server*, align 8, !dbg !220
-  %r = alloca i32, align 4, !dbg !220
-  %pid2 = alloca i32, align 4, !dbg !220
-  %welcome = alloca i8*, align 8, !dbg !220
-  %msg = alloca i8*, align 8, !dbg !220
-  %buff = alloca i8*, align 8, !dbg !220
-  %bye = alloca i8*, align 8, !dbg !220
-  store %struct.Server* %self, %struct.Server** %self1, align 8, !dbg !220
-  store i32 0, i32* %r, align 4, !dbg !220
-  store i32 0, i32* %r, align 4, !dbg !220
-  store i32 0, i32* %pid2, align 4, !dbg !220
-  %fork = call i32 @fork(), !dbg !221
-  store i32 %fork, i32* %pid2, align 4, !dbg !221
-  br label %if.start, !dbg !221
-
-if.start:                                         ; preds = %entry
-  %pid22 = load i32, i32* %pid2, align 4, !dbg !221
-  %EQ = icmp eq i32 %pid22, 0, !dbg !221
-  br i1 %EQ, label %if.then, label %if.end, !dbg !221
-
-if.end:                                           ; preds = %if.start
-  call void @log(i8* getelementptr inbounds ([23 x i8], [23 x i8]* @STR33, i32 0, i32 0)), !dbg !222
-  br label %while.start78, !dbg !222
-
-if.then:                                          ; preds = %if.start
-  store i8* null, i8** %welcome, align 8, !dbg !220
-  store i8* getelementptr inbounds ([52 x i8], [52 x i8]* @STR18, i32 0, i32 0), i8** %welcome, align 8, !dbg !220
-  %self3 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !223
-  %client_fd = getelementptr %struct.Server, %struct.Server* %self3, i32 0, i32 1, !dbg !223
-  %DOT = load i32, i32* %client_fd, align 4, !dbg !223
-  %welcome4 = load i8*, i8** %welcome, align 8, !dbg !223
-  %welcome5 = load i8*, i8** %welcome, align 8, !dbg !223
-  %strlen = call i32 @strlen(i8* %welcome5), !dbg !223
-  %write = call i32 @write(i32 %DOT, i8* %welcome4, i32 %strlen), !dbg !223
-  br label %while.start, !dbg !223
-
-while.start:                                      ; preds = %if.end20, %if.then
-  br i1 true, label %while.then, label %while.end, !dbg !223
-
-while.then:                                       ; preds = %while.start
-  %self6 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !224
-  %client_fd7 = getelementptr %struct.Server, %struct.Server* %self6, i32 0, i32 1, !dbg !224
-  %DOT8 = load i32, i32* %client_fd7, align 4, !dbg !224
-  %self9 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !224
-  %buf = getelementptr %struct.Server, %struct.Server* %self9, i32 0, i32 2, !dbg !224
-  %DOT10 = load i8*, i8** %buf, align 8, !dbg !224
-  %read = call i32 @read(i32 %DOT8, i8* %DOT10, i32 1023), !dbg !224
-  store i32 %read, i32* %r, align 4, !dbg !224
-  store i8* null, i8** %msg, align 8, !dbg !220
-  br label %if.start11, !dbg !220
-
-while.end:                                        ; preds = %elif.then62, %if.then13, %while.start
-  ret void, !dbg !225
-
-if.start11:                                       ; preds = %while.then
-  %r14 = load i32, i32* %r, align 4, !dbg !220
-  %LE = icmp sle i32 %r14, 0, !dbg !220
-  br i1 %LE, label %if.then13, label %if.end12, !dbg !220
-
-if.end12:                                         ; preds = %if.start11
-  %self15 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !226
-  %buf16 = getelementptr %struct.Server, %struct.Server* %self15, i32 0, i32 2, !dbg !226
-  %DOT17 = load i8*, i8** %buf16, align 8, !dbg !226
-  %r18 = load i32, i32* %r, align 4, !dbg !226
-  %ACCESS = getelementptr i8, i8* %DOT17, i32 %r18, !dbg !226
-  store i8 0, i8* %ACCESS, align 1, !dbg !226
-  br label %if.start19, !dbg !226
-
-if.then13:                                        ; preds = %if.start11
-  call void @log_ts(i8* getelementptr inbounds ([8 x i8], [8 x i8]* @STR19, i32 0, i32 0), i8* getelementptr inbounds ([9 x i8], [9 x i8]* @STR20, i32 0, i32 0), i8* getelementptr inbounds ([20 x i8], [20 x i8]* @STR21, i32 0, i32 0)), !dbg !227
-  br label %while.end, !dbg !227
-
-if.start19:                                       ; preds = %if.end12
-  %self22 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !228
-  %buf23 = getelementptr %struct.Server, %struct.Server* %self22, i32 0, i32 2, !dbg !228
-  %DOT24 = load i8*, i8** %buf23, align 8, !dbg !228
-  %strcmp = call i32 @strcmp(i8* %DOT24, i8* getelementptr inbounds ([6 x i8], [6 x i8]* @STR22, i32 0, i32 0)), !dbg !228
-  %EQ25 = icmp eq i32 %strcmp, 0, !dbg !228
-  br i1 %EQ25, label %if.then21, label %elif.start, !dbg !228
-
-if.end20:                                         ; preds = %if.else, %elif.then48, %elif.then, %if.then21
-  br label %while.start, !dbg !225
-
-if.then21:                                        ; preds = %if.start19
-  store i8* getelementptr inbounds ([37 x i8], [37 x i8]* @STR23, i32 0, i32 0), i8** %msg, align 8, !dbg !228
-  %self26 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !229
-  %client_fd27 = getelementptr %struct.Server, %struct.Server* %self26, i32 0, i32 1, !dbg !229
-  %DOT28 = load i32, i32* %client_fd27, align 4, !dbg !229
-  %msg29 = load i8*, i8** %msg, align 8, !dbg !229
-  %msg30 = load i8*, i8** %msg, align 8, !dbg !229
-  %strlen31 = call i32 @strlen(i8* %msg30), !dbg !229
-  %write32 = call i32 @write(i32 %DOT28, i8* %msg29, i32 %strlen31), !dbg !229
-  br label %if.end20, !dbg !229
-
-elif.start:                                       ; preds = %if.start19
-  %self34 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !230
-  %buf35 = getelementptr %struct.Server, %struct.Server* %self34, i32 0, i32 2, !dbg !230
-  %DOT36 = load i8*, i8** %buf35, align 8, !dbg !230
-  %strcmp37 = call i32 @strcmp(i8* %DOT36, i8* getelementptr inbounds ([6 x i8], [6 x i8]* @STR24, i32 0, i32 0)), !dbg !230
-  %EQ38 = icmp eq i32 %strcmp37, 0, !dbg !230
-  br i1 %EQ38, label %elif.then, label %elif.start33, !dbg !230
-
-elif.then:                                        ; preds = %elif.start
-  store i8* null, i8** %buff, align 8, !dbg !220
-  %heap = call i8* @calloc(i64 100, i64 1), !dbg !220
-  store i8* %heap, i8** %buff, align 8, !dbg !220
-  %buff39 = load i8*, i8** %buff, align 8, !dbg !231
-  %get_time = call i8* @get_time(), !dbg !231
-  %strcpy = call i8* @strcpy(i8* %buff39, i8* %get_time), !dbg !231
-  %self40 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !232
-  %client_fd41 = getelementptr %struct.Server, %struct.Server* %self40, i32 0, i32 1, !dbg !232
-  %DOT42 = load i32, i32* %client_fd41, align 4, !dbg !232
-  %buff43 = load i8*, i8** %buff, align 8, !dbg !232
-  %buff44 = load i8*, i8** %buff, align 8, !dbg !232
-  %strlen45 = call i32 @strlen(i8* %buff44), !dbg !232
-  %write46 = call i32 @write(i32 %DOT42, i8* %buff43, i32 %strlen45), !dbg !232
-  %buff47 = load i8*, i8** %buff, align 8, !dbg !233
-  call void @free(i8* %buff47), !dbg !233
-  br label %if.end20, !dbg !233
-
-elif.start33:                                     ; preds = %elif.start
-  %self50 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !234
-  %buf51 = getelementptr %struct.Server, %struct.Server* %self50, i32 0, i32 2, !dbg !234
-  %DOT52 = load i8*, i8** %buf51, align 8, !dbg !234
-  %strcmp53 = call i32 @strcmp(i8* %DOT52, i8* getelementptr inbounds ([8 x i8], [8 x i8]* @STR25, i32 0, i32 0)), !dbg !234
-  %EQ54 = icmp eq i32 %strcmp53, 0, !dbg !234
-  br i1 %EQ54, label %elif.then48, label %elif.start49, !dbg !234
-
-elif.then48:                                      ; preds = %elif.start33
-  store i8* getelementptr inbounds ([38 x i8], [38 x i8]* @STR26, i32 0, i32 0), i8** %msg, align 8, !dbg !234
-  %self55 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !235
-  %client_fd56 = getelementptr %struct.Server, %struct.Server* %self55, i32 0, i32 1, !dbg !235
-  %DOT57 = load i32, i32* %client_fd56, align 4, !dbg !235
-  %msg58 = load i8*, i8** %msg, align 8, !dbg !235
-  %msg59 = load i8*, i8** %msg, align 8, !dbg !235
-  %strlen60 = call i32 @strlen(i8* %msg59), !dbg !235
-  %write61 = call i32 @write(i32 %DOT57, i8* %msg58, i32 %strlen60), !dbg !235
-  br label %if.end20, !dbg !235
-
-elif.start49:                                     ; preds = %elif.start33
-  %self63 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !236
-  %buf64 = getelementptr %struct.Server, %struct.Server* %self63, i32 0, i32 2, !dbg !236
-  %DOT65 = load i8*, i8** %buf64, align 8, !dbg !236
-  %strcmp66 = call i32 @strcmp(i8* %DOT65, i8* getelementptr inbounds ([6 x i8], [6 x i8]* @STR27, i32 0, i32 0)), !dbg !236
-  %EQ67 = icmp eq i32 %strcmp66, 0, !dbg !236
-  br i1 %EQ67, label %elif.then62, label %if.else, !dbg !236
-
-elif.then62:                                      ; preds = %elif.start49
-  store i8* null, i8** %bye, align 8, !dbg !220
-  store i8* getelementptr inbounds ([17 x i8], [17 x i8]* @STR28, i32 0, i32 0), i8** %bye, align 8, !dbg !220
-  %self68 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !237
-  %client_fd69 = getelementptr %struct.Server, %struct.Server* %self68, i32 0, i32 1, !dbg !237
-  %DOT70 = load i32, i32* %client_fd69, align 4, !dbg !237
-  %bye71 = load i8*, i8** %bye, align 8, !dbg !237
-  %bye72 = load i8*, i8** %bye, align 8, !dbg !237
-  %strlen73 = call i32 @strlen(i8* %bye72), !dbg !237
-  %write74 = call i32 @write(i32 %DOT70, i8* %bye71, i32 %strlen73), !dbg !237
-  br label %while.end, !dbg !237
-
-if.else:                                          ; preds = %elif.start49
-  call void @log(i8* getelementptr inbounds ([6 x i8], [6 x i8]* @STR29, i32 0, i32 0)), !dbg !238
-  %self75 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !239
-  %buf76 = getelementptr %struct.Server, %struct.Server* %self75, i32 0, i32 2, !dbg !239
-  %DOT77 = load i8*, i8** %buf76, align 8, !dbg !239
-  call void @log_ts(i8* getelementptr inbounds ([8 x i8], [8 x i8]* @STR30, i32 0, i32 0), i8* getelementptr inbounds ([9 x i8], [9 x i8]* @STR31, i32 0, i32 0), i8* %DOT77), !dbg !239
-  call void @log(i8* getelementptr inbounds ([23 x i8], [23 x i8]* @STR32, i32 0, i32 0)), !dbg !225
-  br label %if.end20, !dbg !225
-
-while.start78:                                    ; preds = %if.end85, %if.end
-  br i1 true, label %while.then79, label %while.end80, !dbg !222
-
-while.then79:                                     ; preds = %while.start78
-  %self81 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !240
-  %rbuf = getelementptr %struct.Server, %struct.Server* %self81, i32 0, i32 3, !dbg !240
-  %DOT82 = load i8*, i8** %rbuf, align 8, !dbg !240
-  %read83 = call i32 @read(i32 0, i8* %DOT82, i32 1023), !dbg !240
-  store i32 %read83, i32* %r, align 4, !dbg !240
-  br label %if.start84, !dbg !240
-
-while.end80:                                      ; preds = %if.then86, %while.start78
-  %self103 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !241
-  %client_fd104 = getelementptr %struct.Server, %struct.Server* %self103, i32 0, i32 1, !dbg !241
-  %DOT105 = load i32, i32* %client_fd104, align 4, !dbg !241
-  %close = call i32 @close(i32 %DOT105), !dbg !241
-  ret void, !dbg !241
-
-if.start84:                                       ; preds = %while.then79
-  %r87 = load i32, i32* %r, align 4, !dbg !240
-  %LE88 = icmp sle i32 %r87, 0, !dbg !240
-  br i1 %LE88, label %if.then86, label %if.end85, !dbg !240
-
-if.end85:                                         ; preds = %if.start84
-  %self89 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !242
-  %rbuf90 = getelementptr %struct.Server, %struct.Server* %self89, i32 0, i32 3, !dbg !242
-  %r91 = load i32, i32* %r, align 4, !dbg !242
-  %SUB = sub i32 %r91, 1, !dbg !242
-  %DOT92 = load i8*, i8** %rbuf90, align 8, !dbg !242
-  %ACCESS93 = getelementptr i8, i8* %DOT92, i32 %SUB, !dbg !242
-  store i8 0, i8* %ACCESS93, align 1, !dbg !242
-  %self94 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !243
-  %client_fd95 = getelementptr %struct.Server, %struct.Server* %self94, i32 0, i32 1, !dbg !243
-  %DOT96 = load i32, i32* %client_fd95, align 4, !dbg !243
-  %self97 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !243
-  %rbuf98 = getelementptr %struct.Server, %struct.Server* %self97, i32 0, i32 3, !dbg !243
-  %DOT99 = load i8*, i8** %rbuf98, align 8, !dbg !243
-  %r100 = load i32, i32* %r, align 4, !dbg !243
-  %SUB101 = sub i32 %r100, 1, !dbg !243
-  %write102 = call i32 @write(i32 %DOT96, i8* %DOT99, i32 %SUB101), !dbg !243
-  call void @log(i8* getelementptr inbounds ([23 x i8], [23 x i8]* @STR34, i32 0, i32 0)), !dbg !244
-  br label %while.start78, !dbg !244
-
-if.then86:                                        ; preds = %if.start84
-  br label %while.end80, !dbg !240
-}
-
-define void @Server.delete(%struct.Server* %self) !dbg !245 {
-entry:
-  %self1 = alloca %struct.Server*, align 8, !dbg !246
-  store %struct.Server* %self, %struct.Server** %self1, align 8, !dbg !246
-  %self2 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !247
-  %buf = getelementptr %struct.Server, %struct.Server* %self2, i32 0, i32 2, !dbg !247
-  %DOT = load i8*, i8** %buf, align 8, !dbg !247
-  call void @free(i8* %DOT), !dbg !247
-  %self3 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !248
-  %rbuf = getelementptr %struct.Server, %struct.Server* %self3, i32 0, i32 3, !dbg !248
-  %DOT4 = load i8*, i8** %rbuf, align 8, !dbg !248
-  call void @free(i8* %DOT4), !dbg !248
-  %self5 = load %struct.Server*, %struct.Server** %self1, align 8, !dbg !248
-  ret void, !dbg !248
-}
-
-define i32 @main() !dbg !249 {
-entry:
-  %addr = alloca %struct.SockAddr, align 8, !dbg !250
-  %port = alloca i32, align 4, !dbg !250
-  %srv = alloca %struct.Server, align 8, !dbg !250
-  %pid = alloca i32, align 4, !dbg !250
-  call void @banner(), !dbg !250
-  store %struct.SockAddr zeroinitializer, %struct.SockAddr* %addr, align 8, !dbg !250
-  store i32 0, i32* %port, align 4, !dbg !250
-  store i32 17000, i32* %port, align 4, !dbg !250
-  %port1 = load i32, i32* %port, align 4, !dbg !251
-  call void @SockAddr.set_port(i32 %port1, %struct.SockAddr* %addr), !dbg !251
-  call void @SockAddr.set_ip(i32 0, i32 0, i32 0, i32 0, %struct.SockAddr* %addr), !dbg !252
-  store %struct.Server zeroinitializer, %struct.Server* %srv, align 8, !dbg !250
-  call void @Server.set_reuse(%struct.Server* %srv), !dbg !253
-  br label %if.start, !dbg !253
-
-if.start:                                         ; preds = %entry
-  %fd = getelementptr %struct.Server, %struct.Server* %srv, i32 0, i32 0, !dbg !254
-  %DOT = load i32, i32* %fd, align 4, !dbg !254
-  %data = getelementptr %struct.SockAddr, %struct.SockAddr* %addr, i32 0, i32 0, !dbg !254
-  %DOT2 = load i8*, i8** %data, align 8, !dbg !254
-  %bind = call i32 @bind(i32 %DOT, i8* %DOT2, i32 16), !dbg !254
-  %LT = icmp slt i32 %bind, 0, !dbg !254
-  br i1 %LT, label %if.then, label %if.end, !dbg !254
-
-if.end:                                           ; preds = %if.start
-  %fd3 = getelementptr %struct.Server, %struct.Server* %srv, i32 0, i32 0, !dbg !255
-  %DOT4 = load i32, i32* %fd3, align 4, !dbg !255
-  %listen = call i32 @listen(i32 %DOT4, i32 5), !dbg !255
-  call void @log_ts(i8* getelementptr inbounds ([8 x i8], [8 x i8]* @STR38, i32 0, i32 0), i8* getelementptr inbounds ([9 x i8], [9 x i8]* @STR39, i32 0, i32 0), i8* getelementptr inbounds ([27 x i8], [27 x i8]* @STR40, i32 0, i32 0)), !dbg !256
-  br label %while.start, !dbg !256
-
-if.then:                                          ; preds = %if.start
-  call void @log_ts(i8* getelementptr inbounds ([8 x i8], [8 x i8]* @STR35, i32 0, i32 0), i8* getelementptr inbounds ([9 x i8], [9 x i8]* @STR36, i32 0, i32 0), i8* getelementptr inbounds ([12 x i8], [12 x i8]* @STR37, i32 0, i32 0)), !dbg !257
-  ret i32 1, !dbg !257
-
-while.start:                                      ; preds = %if.end14, %if.then9, %if.end
-  br i1 true, label %while.then, label %while.end, !dbg !256
-
-while.then:                                       ; preds = %while.start
-  %client_fd = getelementptr %struct.Server, %struct.Server* %srv, i32 0, i32 1, !dbg !256
-  %fd5 = getelementptr %struct.Server, %struct.Server* %srv, i32 0, i32 0, !dbg !258
-  %DOT6 = load i32, i32* %fd5, align 4, !dbg !258
-  %accept = call i32 @accept(i32 %DOT6, i8* null, i8* null), !dbg !258
-  store i32 %accept, i32* %client_fd, align 4, !dbg !258
-  br label %if.start7, !dbg !258
-
-while.end:                                        ; preds = %while.start
-  call void @SockAddr.delete(%struct.SockAddr* %addr), !dbg !259
-  call void @Server.delete(%struct.Server* %srv), !dbg !259
-  ret i32 0, !dbg !259
-
-if.start7:                                        ; preds = %while.then
-  %client_fd10 = getelementptr %struct.Server, %struct.Server* %srv, i32 0, i32 1, !dbg !258
-  %DOT11 = load i32, i32* %client_fd10, align 4, !dbg !258
-  %LT12 = icmp slt i32 %DOT11, 0, !dbg !258
-  br i1 %LT12, label %if.then9, label %if.end8, !dbg !258
-
-if.end8:                                          ; preds = %if.start7
-  call void @log_ts(i8* getelementptr inbounds ([8 x i8], [8 x i8]* @STR41, i32 0, i32 0), i8* getelementptr inbounds ([9 x i8], [9 x i8]* @STR42, i32 0, i32 0), i8* getelementptr inbounds ([17 x i8], [17 x i8]* @STR43, i32 0, i32 0)), !dbg !260
-  store i32 0, i32* %pid, align 4, !dbg !250
-  %fork = call i32 @fork(), !dbg !261
-  store i32 %fork, i32* %pid, align 4, !dbg !261
-  br label %if.start13, !dbg !261
-
-if.then9:                                         ; preds = %if.start7
-  br label %while.start, !dbg !258
-
-if.start13:                                       ; preds = %if.end8
-  %pid16 = load i32, i32* %pid, align 4, !dbg !261
-  %EQ = icmp eq i32 %pid16, 0, !dbg !261
-  br i1 %EQ, label %if.then15, label %if.end14, !dbg !261
-
-if.end14:                                         ; preds = %if.start13
-  %client_fd19 = getelementptr %struct.Server, %struct.Server* %srv, i32 0, i32 1, !dbg !259
-  %DOT20 = load i32, i32* %client_fd19, align 4, !dbg !259
-  %close21 = call i32 @close(i32 %DOT20), !dbg !259
-  br label %while.start, !dbg !259
-
-if.then15:                                        ; preds = %if.start13
-  %fd17 = getelementptr %struct.Server, %struct.Server* %srv, i32 0, i32 0, !dbg !262
-  %DOT18 = load i32, i32* %fd17, align 4, !dbg !262
-  %close = call i32 @close(i32 %DOT18), !dbg !262
-  call void @Server.handle_client(%struct.Server* %srv), !dbg !263
-  ret i32 0, !dbg !263
+  %self1 = alloca %struct.SockAddr*, align 8, !dbg !183
+  store %struct.SockAddr* %self, %struct.SockAddr** %self1, align 8, !dbg !183
+  %self2 = load %struct.SockAddr*, %struct.SockAddr** %self1, align 8, !dbg !184
+  %data = getelementptr %struct.SockAddr, %struct.SockAddr* %self2, i32 0, i32 0, !dbg !184
+  %DOT = load i8*, i8** %data, align 8, !dbg !184
+  call void @free(i8* %DOT), !dbg !184
+  %self3 = load %struct.SockAddr*, %struct.SockAddr** %self1, align 8, !dbg !184
+  ret void, !dbg !184
 }
 
 !llvm.module.flags = !{!0, !1}
@@ -2298,7 +1809,7 @@ if.then15:                                        ; preds = %if.start13
 !0 = !{i32 2, !"Debug Info Version", i32 3}
 !1 = !{i32 2, !"Dwarf Version", i32 4}
 !2 = distinct !DICompileUnit(language: DW_LANG_C, file: !3, producer: "ura", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, splitDebugInlining: false)
-!3 = !DIFile(filename: "server.ura", directory: "/Users/hrimamohammed/Desktop/personal/ura-lang/tests/projects/ura-tcp-server/cmd")
+!3 = !DIFile(filename: "utils.ura", directory: "/Users/hrimamohammed/Desktop/personal/ura-lang/tests/projects/ura-tcp-server/basic")
 !4 = distinct !DISubprogram(name: "strjoin", linkageName: "strjoin", scope: null, file: !3, line: 58, type: !5, scopeLine: 58, spFlags: DISPFlagDefinition, unit: !2, retainedNodes: !6)
 !5 = !DISubroutineType(types: !6)
 !6 = !{}
@@ -2463,99 +1974,20 @@ if.then15:                                        ; preds = %if.start13
 !165 = !DILocation(line: 8, scope: !163)
 !166 = !DILocation(line: 9, scope: !163)
 !167 = !DILocation(line: 10, scope: !163)
-!168 = distinct !DISubprogram(name: "log_ts", linkageName: "log_ts", scope: null, file: !3, line: 13, type: !5, scopeLine: 13, spFlags: DISPFlagDefinition, unit: !2, retainedNodes: !6)
-!169 = !DILocation(line: 13, scope: !168)
-!170 = !DILocation(line: 14, scope: !168)
-!171 = !DILocation(line: 15, scope: !168)
-!172 = !DILocation(line: 16, scope: !168)
-!173 = !DILocation(line: 17, scope: !168)
-!174 = !DILocation(line: 18, scope: !168)
-!175 = !DILocation(line: 19, scope: !168)
-!176 = !DILocation(line: 20, scope: !168)
-!177 = !DILocation(line: 21, scope: !168)
-!178 = !DILocation(line: 22, scope: !168)
-!179 = !DILocation(line: 23, scope: !168)
-!180 = distinct !DISubprogram(name: "SockAddr.init", linkageName: "SockAddr.init", scope: null, file: !3, line: 40, type: !5, scopeLine: 40, spFlags: DISPFlagDefinition, unit: !2, retainedNodes: !6)
-!181 = !DILocation(line: 40, scope: !180)
-!182 = !DILocation(line: 42, scope: !180)
-!183 = !DILocation(line: 43, scope: !180)
-!184 = distinct !DISubprogram(name: "SockAddr.set_port", linkageName: "SockAddr.set_port", scope: null, file: !3, line: 45, type: !5, scopeLine: 45, spFlags: DISPFlagDefinition, unit: !2, retainedNodes: !6)
-!185 = !DILocation(line: 45, scope: !184)
-!186 = !DILocation(line: 46, scope: !184)
-!187 = !DILocation(line: 47, scope: !184)
-!188 = distinct !DISubprogram(name: "SockAddr.set_ip", linkageName: "SockAddr.set_ip", scope: null, file: !3, line: 49, type: !5, scopeLine: 49, spFlags: DISPFlagDefinition, unit: !2, retainedNodes: !6)
-!189 = !DILocation(line: 49, scope: !188)
-!190 = !DILocation(line: 50, scope: !188)
-!191 = !DILocation(line: 51, scope: !188)
-!192 = !DILocation(line: 52, scope: !188)
-!193 = !DILocation(line: 53, scope: !188)
-!194 = distinct !DISubprogram(name: "SockAddr.delete", linkageName: "SockAddr.delete", scope: null, file: !3, type: !5, spFlags: DISPFlagDefinition, unit: !2, retainedNodes: !6)
-!195 = !DILocation(line: 0, scope: !194)
-!196 = !DILocation(line: 56, scope: !194)
-!197 = distinct !DISubprogram(name: "banner", linkageName: "banner", scope: null, file: !3, line: 4, type: !5, scopeLine: 4, spFlags: DISPFlagDefinition, unit: !2, retainedNodes: !6)
-!198 = !DILocation(line: 5, scope: !197)
-!199 = !DILocation(line: 6, scope: !197)
-!200 = !DILocation(line: 7, scope: !197)
-!201 = !DILocation(line: 8, scope: !197)
-!202 = !DILocation(line: 9, scope: !197)
-!203 = !DILocation(line: 10, scope: !197)
-!204 = !DILocation(line: 11, scope: !197)
-!205 = !DILocation(line: 12, scope: !197)
-!206 = !DILocation(line: 13, scope: !197)
-!207 = !DILocation(line: 14, scope: !197)
-!208 = !DILocation(line: 15, scope: !197)
-!209 = distinct !DISubprogram(name: "Server.init", linkageName: "Server.init", scope: null, file: !3, line: 23, type: !5, scopeLine: 23, spFlags: DISPFlagDefinition, unit: !2, retainedNodes: !6)
-!210 = !DILocation(line: 23, scope: !209)
-!211 = !DILocation(line: 24, scope: !209)
-!212 = !DILocation(line: 27, scope: !209)
-!213 = !DILocation(line: 26, scope: !209)
-!214 = distinct !DISubprogram(name: "Server.set_reuse", linkageName: "Server.set_reuse", scope: null, file: !3, line: 33, type: !5, scopeLine: 33, spFlags: DISPFlagDefinition, unit: !2, retainedNodes: !6)
-!215 = !DILocation(line: 33, scope: !214)
-!216 = !DILocation(line: 35, scope: !214)
-!217 = !DILocation(line: 36, scope: !214)
-!218 = !DILocation(line: 37, scope: !214)
-!219 = distinct !DISubprogram(name: "Server.handle_client", linkageName: "Server.handle_client", scope: null, file: !3, line: 39, type: !5, scopeLine: 39, spFlags: DISPFlagDefinition, unit: !2, retainedNodes: !6)
-!220 = !DILocation(line: 39, scope: !219)
-!221 = !DILocation(line: 41, scope: !219)
-!222 = !DILocation(line: 82, scope: !219)
-!223 = !DILocation(line: 45, scope: !219)
-!224 = !DILocation(line: 48, scope: !219)
-!225 = !DILocation(line: 78, scope: !219)
-!226 = !DILocation(line: 54, scope: !219)
-!227 = !DILocation(line: 51, scope: !219)
-!228 = !DILocation(line: 56, scope: !219)
-!229 = !DILocation(line: 58, scope: !219)
-!230 = !DILocation(line: 60, scope: !219)
-!231 = !DILocation(line: 62, scope: !219)
-!232 = !DILocation(line: 63, scope: !219)
-!233 = !DILocation(line: 64, scope: !219)
-!234 = !DILocation(line: 66, scope: !219)
-!235 = !DILocation(line: 68, scope: !219)
-!236 = !DILocation(line: 70, scope: !219)
-!237 = !DILocation(line: 72, scope: !219)
-!238 = !DILocation(line: 76, scope: !219)
-!239 = !DILocation(line: 77, scope: !219)
-!240 = !DILocation(line: 84, scope: !219)
-!241 = !DILocation(line: 92, scope: !219)
-!242 = !DILocation(line: 88, scope: !219)
-!243 = !DILocation(line: 89, scope: !219)
-!244 = !DILocation(line: 90, scope: !219)
-!245 = distinct !DISubprogram(name: "Server.delete", linkageName: "Server.delete", scope: null, file: !3, type: !5, spFlags: DISPFlagDefinition, unit: !2, retainedNodes: !6)
-!246 = !DILocation(line: 0, scope: !245)
-!247 = !DILocation(line: 95, scope: !245)
-!248 = !DILocation(line: 96, scope: !245)
-!249 = distinct !DISubprogram(name: "main", linkageName: "main", scope: null, file: !3, line: 98, type: !5, scopeLine: 98, spFlags: DISPFlagDefinition, unit: !2, retainedNodes: !6)
-!250 = !DILocation(line: 99, scope: !249)
-!251 = !DILocation(line: 103, scope: !249)
-!252 = !DILocation(line: 104, scope: !249)
-!253 = !DILocation(line: 108, scope: !249)
-!254 = !DILocation(line: 110, scope: !249)
-!255 = !DILocation(line: 114, scope: !249)
-!256 = !DILocation(line: 115, scope: !249)
-!257 = !DILocation(line: 111, scope: !249)
-!258 = !DILocation(line: 118, scope: !249)
-!259 = !DILocation(line: 130, scope: !249)
-!260 = !DILocation(line: 122, scope: !249)
-!261 = !DILocation(line: 124, scope: !249)
-!262 = !DILocation(line: 126, scope: !249)
-!263 = !DILocation(line: 127, scope: !249)
+!168 = distinct !DISubprogram(name: "SockAddr.init", linkageName: "SockAddr.init", scope: null, file: !3, line: 40, type: !5, scopeLine: 40, spFlags: DISPFlagDefinition, unit: !2, retainedNodes: !6)
+!169 = !DILocation(line: 40, scope: !168)
+!170 = !DILocation(line: 42, scope: !168)
+!171 = !DILocation(line: 43, scope: !168)
+!172 = distinct !DISubprogram(name: "SockAddr.set_port", linkageName: "SockAddr.set_port", scope: null, file: !3, line: 45, type: !5, scopeLine: 45, spFlags: DISPFlagDefinition, unit: !2, retainedNodes: !6)
+!173 = !DILocation(line: 45, scope: !172)
+!174 = !DILocation(line: 46, scope: !172)
+!175 = !DILocation(line: 47, scope: !172)
+!176 = distinct !DISubprogram(name: "SockAddr.set_ip", linkageName: "SockAddr.set_ip", scope: null, file: !3, line: 49, type: !5, scopeLine: 49, spFlags: DISPFlagDefinition, unit: !2, retainedNodes: !6)
+!177 = !DILocation(line: 49, scope: !176)
+!178 = !DILocation(line: 50, scope: !176)
+!179 = !DILocation(line: 51, scope: !176)
+!180 = !DILocation(line: 52, scope: !176)
+!181 = !DILocation(line: 53, scope: !176)
+!182 = distinct !DISubprogram(name: "SockAddr.delete", linkageName: "SockAddr.delete", scope: null, file: !3, type: !5, spFlags: DISPFlagDefinition, unit: !2, retainedNodes: !6)
+!183 = !DILocation(line: 0, scope: !182)
+!184 = !DILocation(line: 56, scope: !182)
