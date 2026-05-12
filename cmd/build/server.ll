@@ -1,6 +1,6 @@
-; ModuleID = '/Users/hrimamohammed/Desktop/personal/ura-lang/src/tests/projects/ura-tcp-server/cmd/server.ura'
-source_filename = "/Users/hrimamohammed/Desktop/personal/ura-lang/src/tests/projects/ura-tcp-server/cmd/server.ura"
-target triple = "arm64-apple-macosx16.0.0"
+; ModuleID = '/ura-lang/src/tests/projects/ura-tcp-server/cmd/server.ura'
+source_filename = "/ura-lang/src/tests/projects/ura-tcp-server/cmd/server.ura"
+target triple = "x86_64-pc-linux-gnu"
 
 %struct.String = type { i8*, i32, i32 }
 %struct.SockAddr = type { i8* }
@@ -2298,7 +2298,7 @@ if.then15:                                        ; preds = %if.start13
 !0 = !{i32 2, !"Debug Info Version", i32 3}
 !1 = !{i32 2, !"Dwarf Version", i32 4}
 !2 = distinct !DICompileUnit(language: DW_LANG_C, file: !3, producer: "ura", isOptimized: false, runtimeVersion: 0, emissionKind: FullDebug, splitDebugInlining: false)
-!3 = !DIFile(filename: "server.ura", directory: "/Users/hrimamohammed/Desktop/personal/ura-lang/src/tests/projects/ura-tcp-server/cmd")
+!3 = !DIFile(filename: "server.ura", directory: "/ura-lang/src/tests/projects/ura-tcp-server/cmd")
 !4 = distinct !DISubprogram(name: "String.delete", linkageName: "String.delete", scope: null, file: !3, type: !5, spFlags: DISPFlagDefinition, unit: !2, retainedNodes: !6)
 !5 = !DISubroutineType(types: !6)
 !6 = !{}

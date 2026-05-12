@@ -1,0 +1,979 @@
+proto fn isalnum(c int) int
+proto fn isalpha(c int) int
+proto fn isascii(c int) int
+proto fn isblank(c int) int
+proto fn iscntrl(c int) int
+proto fn isdigit(c int) int
+proto fn isgraph(c int) int
+proto fn islower(c int) int
+proto fn isprint(c int) int
+proto fn ispunct(c int) int
+proto fn isspace(c int) int
+proto fn isupper(c int) int
+proto fn isxdigit(c int) int
+proto fn tolower(c int) int
+proto fn toupper(c int) int
+proto fn __errno_location() chars
+proto fn strerror(errnum int) chars
+proto fn strerror_r(errnum int, buf chars, buflen long) int
+proto fn perror(s chars) void
+EPERM int = 1
+ENOENT int = 2
+ESRCH int = 3
+EINTR int = 4
+EIO int = 5
+ENXIO int = 6
+E2BIG int = 7
+ENOEXEC int = 8
+EBADF int = 9
+ECHILD int = 10
+EACCES int = 13
+EFAULT int = 14
+ENOTBLK int = 15
+EBUSY int = 16
+EEXIST int = 17
+EXDEV int = 18
+ENODEV int = 19
+ENOTDIR int = 20
+EISDIR int = 21
+EINVAL int = 22
+ENFILE int = 23
+EMFILE int = 24
+ENOTTY int = 25
+ETXTBSY int = 26
+EFBIG int = 27
+ENOSPC int = 28
+ESPIPE int = 29
+EROFS int = 30
+EMLINK int = 31
+EPIPE int = 32
+EDOM int = 33
+ERANGE int = 34
+EAGAIN int = 11
+EWOULDBLOCK int = 11
+ENOMEM int = 12
+EDEADLK int = 35
+ENAMETOOLONG int = 36
+ENOLCK int = 37
+ENOSYS int = 38
+ENOTEMPTY int = 39
+ELOOP int = 40
+ENOMSG int = 42
+EIDRM int = 43
+EOVERFLOW int = 75
+ECONNREFUSED int = 111
+EHOSTUNREACH int = 113
+EADDRINUSE int = 98
+EADDRNOTAVAIL int = 99
+ENETUNREACH int = 101
+ECONNRESET int = 104
+ETIMEDOUT int = 110
+proto fn open(path chars, flags int, mode int) int
+proto fn openat(dirfd int, path chars, flags int, mode int) int
+proto fn creat(path chars, mode int) int
+proto fn fcntl(fd int, cmd int, arg int) int
+O_RDONLY int = 0
+O_WRONLY int = 1
+O_RDWR int = 2
+O_CREAT int = 64
+O_EXCL int = 128
+O_NOCTTY int = 256
+O_TRUNC int = 512
+O_APPEND int = 1024
+O_NONBLOCK int = 2048
+O_DSYNC int = 4096
+O_DIRECTORY int = 65536
+O_NOFOLLOW int = 131072
+O_CLOEXEC int = 524288
+F_DUPFD int = 0
+F_GETFD int = 1
+F_SETFD int = 2
+F_GETFL int = 3
+F_SETFL int = 4
+FD_CLOEXEC int = 1
+AT_FDCWD int = 100 * -1
+proto fn fopen(path chars, mode chars) chars
+proto fn freopen(path chars, mode chars, file chars) chars
+proto fn fclose(file chars) int
+proto fn fflush(file chars) int
+proto fn fgetc(file chars) int
+proto fn fputc(c int, file chars) int
+proto fn getc(file chars) int
+proto fn putc(c int, file chars) int
+proto fn getchar() int
+proto fn putchar(c char) int
+proto fn ungetc(c int, file chars) int
+proto fn fgets(buffer chars, size int, file chars) chars
+proto fn fputs(str chars, file chars) int
+proto fn puts(str chars) int
+proto fn gets(buffer chars) chars
+proto fn fread(ptr chars, size int, nmemb int, file chars) int
+proto fn fwrite(ptr chars, size int, nmemb int, file chars) int
+proto fn write(fd int, ptr chars, len int) int
+proto fn read(fd int, ptr chars, len int) int
+proto fn fseek(file chars, offset long, whence int) int
+proto fn ftell(file chars) long
+proto fn rewind(file chars) void
+proto fn fgetpos(file chars, pos chars) int
+proto fn fsetpos(file chars, pos chars) int
+proto fn feof(file chars) int
+proto fn ferror(file chars) int
+proto fn clearerr(file chars) void
+proto fn perror(str chars) void
+proto fn setvbuf(file chars, buffer chars, mode int, size int) int
+proto fn setbuf(file chars, buffer chars) void
+proto fn remove(path chars) int
+proto fn rename(oldpath chars, newpath chars) int
+proto fn tmpfile() chars
+proto fn tmpnam(str chars) chars
+proto fn fileno(file chars) int
+proto fn fdopen(fd int, mode chars) chars
+proto fn printf(format chars, ...) int
+proto fn fprintf(file chars, format chars) int
+proto fn sprintf(buffer chars, format chars) int
+proto fn snprintf(buffer chars, size int, format chars) int
+proto fn dprintf(fd int, format chars) int
+proto fn vprintf(format chars, args chars) int
+proto fn vfprintf(file chars, format chars, args chars) int
+proto fn vsprintf(buffer chars, format chars, args chars) int
+proto fn vsnprintf(buffer chars, size int, format chars, args chars) int
+proto fn vdprintf(fd int, format chars, args chars) int
+proto fn scanf(format chars) int
+proto fn fscanf(file chars, format chars) int
+proto fn sscanf(buffer chars, format chars) int
+proto fn vscanf(format chars, args chars) int
+proto fn vfscanf(file chars, format chars, args chars) int
+proto fn vsscanf(buffer chars, format chars, args chars) int
+proto fn sin(x float) float
+proto fn cos(x float) float
+proto fn tan(x float) float
+proto fn asin(x float) float
+proto fn acos(x float) float
+proto fn atan(x float) float
+proto fn atan2(y float, x float) float
+proto fn sinh(x float) float
+proto fn cosh(x float) float
+proto fn tanh(x float) float
+proto fn asinh(x float) float
+proto fn acosh(x float) float
+proto fn atanh(x float) float
+proto fn exp(x float) float
+proto fn exp2(x float) float
+proto fn expm1(x float) float
+proto fn log(x float) float
+proto fn log2(x float) float
+proto fn log10(x float) float
+proto fn log1p(x float) float
+proto fn pow(x float, y float) float
+proto fn sqrt(x float) float
+proto fn cbrt(x float) float
+proto fn hypot(x float, y float) float
+proto fn ceil(x float) float
+proto fn floor(x float) float
+proto fn trunc(x float) float
+proto fn round(x float) float
+proto fn fmod(x float, y float) float
+proto fn remainder(x float, y float) float
+proto fn fabs(x float) float
+proto fn copysign(x float, y float) float
+proto fn fmax(x float, y float) float
+proto fn fmin(x float, y float) float
+proto fn fdim(x float, y float) float
+proto fn isnan(x float) int
+proto fn isinf(x float) int
+proto fn isfinite(x float) int
+proto fn signbit(x float) int
+proto fn tgamma(x float) float
+proto fn lgamma(x float) float
+proto fn erf(x float) float
+proto fn erfc(x float) float
+proto fn malloc(size int) chars
+proto fn calloc(len long, size long) chars
+proto fn realloc(ptr chars, newSize int) chars
+proto fn free(ptr chars) void
+proto fn aligned_alloc(alignment int, size int) chars
+struct In_addr:
+   s_addr int
+
+struct Sockaddr_in:
+   sin_family short
+   sin_port short
+   sin_addr In_addr
+   sin_zero0 long
+
+struct Sockaddr:
+   sa_family short
+   sa_data0 char
+   sa_data1 char
+   sa_data2 char
+   sa_data3 char
+   sa_data4 char
+   sa_data5 char
+   sa_data6 char
+   sa_data7 char
+   sa_data8 char
+   sa_data9 char
+   sa_data10 char
+   sa_data11 char
+   sa_data12 char
+   sa_data13 char
+
+struct Pollfd:
+   fd int
+   events short
+   revents short
+
+proto fn socket(domain int, type int, protocol int) int
+proto fn bind(fd int, addr chars, addrlen int) int
+proto fn listen(fd int, backlog int) int
+proto fn accept(fd int, addr chars, addrlen chars) int
+proto fn connect(fd int, addr chars, addrlen int) int
+proto fn shutdown(fd int, how int) int
+proto fn send(fd int, buf chars, len long, flags int) long
+proto fn recv(fd int, buf chars, len long, flags int) long
+proto fn sendto(fd int, buf chars, len long, flags int, addr chars, addrlen int) long
+proto fn recvfrom(fd int, buf chars, len long, flags int, addr chars, addrlen chars) long
+proto fn sendmsg(fd int, msg chars, flags int) long
+proto fn recvmsg(fd int, msg chars, flags int) long
+proto fn setsockopt(fd int, level int, optname int, optval chars, optlen int) int
+proto fn getsockopt(fd int, level int, optname int, optval chars, optlen chars) int
+proto fn getsockname(fd int, addr chars, addrlen chars) int
+proto fn getpeername(fd int, addr chars, addrlen chars) int
+proto fn htons(hostshort int) int
+proto fn htonl(hostlong int) int
+proto fn ntohs(netshort int) int
+proto fn ntohl(netlong int) int
+proto fn inet_addr(cp chars) int
+proto fn inet_ntoa(addr In_addr) chars
+proto fn inet_pton(af int, src chars, dst chars) int
+proto fn inet_ntop(af int, src chars, dst chars, size int) chars
+proto fn gethostbyname(name chars) chars
+proto fn gethostbyaddr(addr chars, len int, type int) chars
+proto fn getaddrinfo(node chars, service chars, hints chars, res chars) int
+proto fn freeaddrinfo(res chars) void
+proto fn gai_strerror(errcode int) chars
+proto fn getnameinfo(addr chars, addrlen int, host chars, hostlen int, serv chars, servlen int, flags int) int
+proto fn select(nfds int, readfds chars, writefds chars, exceptfds chars, timeout chars) int
+proto fn poll(fds chars, nfds int, timeout int) int
+proto fn ioctl(fd int, request int, arg chars) int
+AF_UNSPEC int = 0
+AF_UNIX int = 1
+AF_INET int = 2
+AF_INET6 int = 10
+PF_UNSPEC int = 0
+PF_UNIX int = 1
+PF_INET int = 2
+PF_INET6 int = 10
+SOCK_STREAM int = 1
+SOCK_DGRAM int = 2
+SOCK_RAW int = 3
+SOCK_SEQPACKET int = 5
+SOL_SOCKET int = 1
+SO_REUSEADDR int = 2
+SO_KEEPALIVE int = 9
+SO_BROADCAST int = 6
+SO_LINGER int = 13
+SO_RCVBUF int = 8
+SO_SNDBUF int = 7
+IPPROTO_IP int = 0
+IPPROTO_TCP int = 6
+IPPROTO_UDP int = 17
+IPPROTO_IPV6 int = 41
+SHUT_RD int = 0
+SHUT_WR int = 1
+SHUT_RDWR int = 2
+POLLIN int = 1
+POLLPRI int = 2
+POLLOUT int = 4
+POLLERR int = 8
+POLLHUP int = 16
+POLLNVAL int = 32
+INADDR_ANY int = 0
+INADDR_LOOPBACK int = 2130706433
+INADDR_BROADCAST int = 1 * -1
+struct Os:
+   argc int
+   argv array[chars]
+
+os Os
+proto fn signal(sig int, handler chars) chars
+proto fn raise(sig int) int
+proto fn kill(pid int, sig int) int
+proto fn sigaction(sig int, act chars, oldact chars) int
+proto fn sigprocmask(how int, set chars, oldset chars) int
+proto fn sigsuspend(mask chars) int
+proto fn strsignal(sig int) chars
+SIGHUP int = 1
+SIGINT int = 2
+SIGQUIT int = 3
+SIGILL int = 4
+SIGTRAP int = 5
+SIGABRT int = 6
+SIGFPE int = 8
+SIGKILL int = 9
+SIGSEGV int = 11
+SIGPIPE int = 13
+SIGALRM int = 14
+SIGTERM int = 15
+SIGUSR1 int = 10
+SIGUSR2 int = 12
+SIGCHLD int = 17
+SIGCONT int = 18
+SIGSTOP int = 19
+SIGTSTP int = 20
+SIGBUS int = 7
+SIGSYS int = 31
+SIGURG int = 23
+SIGWINCH int = 28
+SIGIO int = 29
+SIG_BLOCK int = 0
+SIG_UNBLOCK int = 1
+SIG_SETMASK int = 2
+struct Timespec_stat:
+   tv_sec long
+   tv_nsec long
+
+struct Stat:
+   st_dev long
+   st_ino long
+   st_nlink long
+   st_mode int
+   st_uid int
+   st_gid int
+   __pad0 int
+   st_rdev long
+   st_size long
+   st_blksize long
+   st_blocks long
+   st_atim Timespec_stat
+   st_mtim Timespec_stat
+   st_ctim Timespec_stat
+   __reserved0 long
+   __reserved1 long
+   __reserved2 long
+
+proto fn stat(path chars, buf chars) int
+proto fn fstat(fd int, buf chars) int
+proto fn lstat(path chars, buf chars) int
+proto fn mkdir(path chars, mode int) int
+proto fn chmod(path chars, mode int) int
+proto fn fchmod(fd int, mode int) int
+proto fn umask(cmask int) int
+S_IFMT int = 61440
+S_IFSOCK int = 49152
+S_IFLNK int = 40960
+S_IFREG int = 32768
+S_IFBLK int = 24576
+S_IFDIR int = 16384
+S_IFCHR int = 8192
+S_IFIFO int = 4096
+S_ISUID int = 2048
+S_ISGID int = 1024
+S_ISVTX int = 512
+S_IRWXU int = 448
+S_IRUSR int = 256
+S_IWUSR int = 128
+S_IXUSR int = 64
+S_IRWXG int = 56
+S_IRGRP int = 32
+S_IWGRP int = 16
+S_IXGRP int = 8
+S_IRWXO int = 7
+S_IROTH int = 4
+S_IWOTH int = 2
+S_IXOTH int = 1
+proto fn abort() void
+proto fn exit(code int) void
+proto fn quick_exit(code int) void
+proto fn _Exit(code int) void
+proto fn getenv(name chars) chars
+proto fn setenv(name chars, value chars, overwrite int) int
+proto fn unsetenv(name chars) int
+proto fn putenv(string chars) int
+proto fn system(command chars) int
+proto fn rand() int
+proto fn srand(seed int) void
+proto fn bsearch(key chars, base chars, nmemb int, size int, compar chars) chars
+proto fn qsort(base chars, nmemb int, size int, compar chars) void
+proto fn abs(n int) int
+proto fn labs(n long) long
+proto fn div(numer int, denom int) chars
+proto fn ldiv(numer long, denom long) chars
+proto fn atoi(str chars) int
+proto fn atol(str chars) long
+proto fn atof(str chars) float
+proto fn strtol(str chars, endptr chars, base int) long
+proto fn strtoul(str chars, endptr chars, base int) long
+proto fn strtof(str chars, endptr chars) float
+proto fn strtod(str chars, endptr chars) float
+proto fn strtoll(str chars, endptr chars, base int) long
+proto fn strtoull(str chars, endptr chars, base int) long
+proto fn mblen(s chars, n int) int
+proto fn mbtowc(pwc chars, s chars, n int) int
+proto fn wctomb(s chars, wchar int) int
+proto fn mbstowcs(dest chars, src chars, n int) int
+proto fn wcstombs(dest chars, src chars, n int) int
+proto fn strlen(s chars) int
+proto fn strnlen(s chars, maxlen int) int
+proto fn strcmp(a chars, b chars) int
+proto fn strncmp(a chars, b chars, n int) int
+proto fn strcasecmp(a chars, b chars) int
+proto fn strncasecmp(a chars, b chars, n int) int
+proto fn strcoll(a chars, b chars) int
+proto fn strxfrm(dest chars, src chars, n int) int
+proto fn strcpy(dest chars, src chars) chars
+proto fn strncpy(dest chars, src chars, n int) chars
+proto fn strdup(s chars) chars
+proto fn strndup(s chars, n int) chars
+proto fn strcat(dest chars, src chars) chars
+proto fn strncat(dest chars, src chars, n int) chars
+proto fn strchr(s chars, c int) chars
+proto fn strrchr(s chars, c int) chars
+proto fn strstr(haystack chars, needle chars) chars
+proto fn strcasestr(haystack chars, needle chars) chars
+proto fn strspn(s chars, accept chars) int
+proto fn strcspn(s chars, reject chars) int
+proto fn strpbrk(s chars, accept chars) chars
+proto fn strtok(s chars, delim chars) chars
+proto fn strtok_r(s chars, delim chars, saveptr chars) chars
+proto fn strerror(errnum int) chars
+proto fn strerror_r(errnum int, buf chars, buflen int) int
+proto fn memchr(ptr chars, c int, n int) chars
+proto fn memrchr(ptr chars, c int, n int) chars
+proto fn memcmp(a chars, b chars, n int) int
+proto fn memcpy(dest chars, src chars, n int) chars
+proto fn memmove(dest chars, src chars, n int) chars
+proto fn memset(ptr chars, value int, n int) chars
+proto fn memccpy(dest chars, src chars, c int, n int) chars
+proto fn bzero(s chars, size long) void
+proto fn strlcpy(dest chars, src chars, size int) int
+proto fn strlcat(dest chars, src chars, size int) int
+proto fn strsignal(sig int) chars
+proto fn memset_s(ptr chars, size int, value int, n int) chars
+fn strjoin(left chars, right chars) chars:
+   len1 int = 0
+   len2 int = 0
+   if left != null:
+      len1 = strlen(left)
+   if right != null:
+      len2 = strlen(right)
+   str chars = calloc(((len1 + len2) + 1) as long, 1 as long)
+   i int = 0
+   while i < len1:
+      str[i] = left[i]
+      i += 1
+   j int = 0
+   while j < len2:
+      str[i + j] = right[j]
+      j += 1
+   return str
+
+struct String:
+   value chars
+   count int
+   size int
+
+fn String_delete(ref self String) void:
+   free(self.value)
+   return
+
+fn String_assign(ref self String, str chars) void:
+   if str == null:
+      str = ""
+   len int = strlen(str)
+   if (self.value == null) or (self.size <= len):
+      if self.size == 0:
+         self.size = 10
+      while self.size <= len:
+         self.size *= 2
+      self.value = realloc(self.value, self.size)
+   strcpy(self.value, str)
+   bzero(self.value + len, (self.size - len) as long)
+   self.count = len
+   return
+
+fn String_join(ref self String, str chars) void:
+   if str == null:
+      return
+   res chars = strjoin(self.value, str)
+   String_assign(ref self, res)
+   free(res)
+   return
+
+fn String_clear(ref self String) void:
+   bzero(self.value, self.size as long)
+   self.count = 0
+   return
+
+fn String_push(ref self String, c char) void:
+   if (self.count + 1) >= self.size:
+      if self.size == 0:
+         self.size = 10
+      else:
+         self.size *= 2
+      self.value = realloc(self.value, self.size)
+   self.value[self.count] = c
+   self.count += 1
+   self.value[self.count] = 0 as char
+   return
+
+fn String_pop(ref self String) char:
+   if self.count == 0:
+      return 0 as char
+   self.count -= 1
+   c char = self.value[self.count]
+   self.value[self.count] = 0 as char
+   return c
+
+fn String_new() String:
+   s String
+   s.size = 10
+   s.value = calloc(10 as long, 1 as long)
+   return s
+
+fn String_from(str chars) String:
+   s String = String_new()
+   String_assign(ref s, str)
+   return s
+
+fn String_from_int(n int) String:
+   s String = String_new()
+   if n == 0:
+      String_push(ref s, '0')
+      return s
+   neg bool = False
+   num int = n
+   if num < 0:
+      neg = True
+      num = 0 - num
+   buf array[char] = stack[char](20)
+   i int = 0
+   while num > 0:
+      buf[i] = ((num % 10) + 48) as char
+      num = num / 10
+      i += 1
+   if neg:
+      String_push(ref s, '-')
+   j int = i - 1
+   while j >= 0:
+      String_push(ref s, buf[j])
+      j -= 1
+   return s
+
+fn String_len(ref self String) int:
+   return self.count
+
+fn String_empty(ref self String) bool:
+   return self.count == 0
+
+fn String_c_str(ref self String) chars:
+   return self.value
+
+fn String_at(ref self String, i int) char:
+   if (i < 0) or (i >= self.count):
+      return 0 as char
+   return self.value[i]
+
+fn String_find(ref self String, needle chars) int:
+   if needle == null:
+      return 1 * -1
+   i int = 0
+   nlen int = strlen(needle)
+   if nlen == 0:
+      return 0
+   while i <= (self.count - nlen):
+      if strncmp(self.value + i, needle, nlen) == 0:
+         return i
+      i += 1
+   return 1 * -1
+
+fn String_contains(ref self String, needle chars) bool:
+   return String_find(ref self, needle) != (1 * -1)
+
+fn String_starts_with(ref self String, prefix chars) bool:
+   if prefix == null:
+      return True
+   plen int = strlen(prefix)
+   if plen > self.count:
+      return False
+   return strncmp(self.value, prefix, plen) == 0
+
+fn String_ends_with(ref self String, suffix chars) bool:
+   if suffix == null:
+      return True
+   slen int = strlen(suffix)
+   if slen > self.count:
+      return False
+   offset int = self.count - slen
+   return strncmp(self.value + offset, suffix, slen) == 0
+
+fn String_substr(ref self String, start int, length int) String:
+   res String = String_new()
+   if (start < 0) or (start >= self.count):
+      return res
+   end int = start + length
+   if end > self.count:
+      end = self.count
+   i int = start
+   while i < end:
+      String_push(ref res, self.value[i])
+      i += 1
+   return res
+
+fn String_upper(ref self String) String:
+   res String = String_new()
+   i int = 0
+   while i < self.count:
+      c char = self.value[i]
+      if (c >= 'a') and (c <= 'z'):
+         v int = c as int - 32
+         String_push(ref res, v as char)
+      else:
+         String_push(ref res, c)
+      i += 1
+   return res
+
+fn String_lower(ref self String) String:
+   res String = String_new()
+   i int = 0
+   while i < self.count:
+      c char = self.value[i]
+      if (c >= 'A') and (c <= 'Z'):
+         v int = c as int + 32
+         String_push(ref res, v as char)
+      else:
+         String_push(ref res, c)
+      i += 1
+   return res
+
+fn String_trim(ref self String) String:
+   start int = 0
+   while start < self.count:
+      c char = self.value[start]
+      if (((c == ' ') or (c == '\t')) or (c == '\n')) or (c == '\r'):
+         start += 1
+      else:
+         break
+   end int = self.count
+   while end > start:
+      c char = self.value[end - 1]
+      if (((c == ' ') or (c == '\t')) or (c == '\n')) or (c == '\r'):
+         end -= 1
+      else:
+         break
+   return String_substr(ref self, start, end - start)
+
+fn String_replace(ref self String, old chars, replacement chars) String:
+   res String = String_new()
+   olen int = strlen(old)
+   if olen == 0:
+      String_assign(ref res, self.value)
+      return res
+   i int = 0
+   while i < self.count:
+      if (i <= (self.count - olen)) and (strncmp(self.value + i, old, olen) == 0):
+         String_join(ref res, replacement)
+         i += olen
+      else:
+         String_push(ref res, self.value[i])
+         i += 1
+   return res
+
+fn String_repeat(ref self String, n int) String:
+   res String = String_new()
+   i int = 0
+   while i < n:
+      String_join(ref res, self.value)
+      i += 1
+   return res
+
+fn String_reverse(ref self String) String:
+   res String = String_new()
+   i int = self.count - 1
+   while i >= 0:
+      String_push(ref res, self.value[i])
+      i -= 1
+   return res
+
+fn String_compare(ref self String, ref other String) int:
+   return strcmp(self.value, other.value)
+
+fn String_to_int(ref self String) int:
+   return atoi(self.value)
+
+fn String_assign_chars(ref self String, str chars) void:
+   String_assign(ref self, str)
+   return
+
+fn String_assign_String(ref self String, ref v String) void:
+   String_assign(ref self, v.value)
+   return
+
+fn String_add_String(ref self String, ref v String) String:
+   res String = String_new()
+   __prep_tmp0 chars = strjoin(self.value, v.value)
+   String_assign_chars(ref res, __prep_tmp0)
+   return res
+
+fn String_add_chars(ref self String, str chars) String:
+   res String = String_new()
+   __prep_tmp1 chars = strjoin(self.value, str)
+   String_assign_chars(ref res, __prep_tmp1)
+   return res
+
+fn String_add_assign_String(ref self String, ref v String) void:
+   String_join(ref self, v.value)
+   return
+
+fn String_add_assign_chars(ref self String, str chars) void:
+   String_join(ref self, str)
+   return
+
+fn String_eq_String(ref self String, ref v String) bool:
+   return strcmp(self.value, v.value) == 0
+
+fn String_eq_chars(ref self String, str chars) bool:
+   if str == null:
+      return self.count == 0
+   return strcmp(self.value, str) == 0
+
+fn String_ne_String(ref self String, ref v String) bool:
+   return strcmp(self.value, v.value) != 0
+
+fn String_ne_chars(ref self String, str chars) bool:
+   if str == null:
+      return self.count != 0
+   return strcmp(self.value, str) != 0
+
+fn String_lt_String(ref self String, ref v String) bool:
+   return strcmp(self.value, v.value) < 0
+
+fn String_gt_String(ref self String, ref v String) bool:
+   return strcmp(self.value, v.value) > 0
+
+fn String_output(ref self String) chars:
+   return self.value
+
+struct Timespec:
+   tv_sec long
+   tv_nsec long
+
+struct Timeval:
+   tv_sec long
+   tv_usec int
+   __pad int
+
+struct Tm:
+   tm_sec int
+   tm_min int
+   tm_hour int
+   tm_mday int
+   tm_mon int
+   tm_year int
+   tm_wday int
+   tm_yday int
+   tm_isdst int
+   tm_gmtoff long
+   tm_zone chars
+
+proto fn time(timer chars) long
+proto fn difftime(time1 long, time0 long) float
+proto fn clock() long
+proto fn gmtime(ref timer long) chars
+proto fn localtime(ref timer long) chars
+proto fn mktime(timeptr chars) long
+proto fn gmtime_r(ref timer long, result chars) chars
+proto fn localtime_r(ref timer long, result chars) chars
+proto fn strftime(s chars, maxsize long, format chars, timeptr chars) long
+proto fn asctime(timeptr chars) chars
+proto fn ctime(timer chars) chars
+proto fn asctime_r(timeptr chars, buf chars) chars
+proto fn ctime_r(timer chars, buf chars) chars
+proto fn clock_gettime(clk_id int, tp chars) int
+proto fn clock_settime(clk_id int, tp chars) int
+proto fn nanosleep(req chars, rem chars) int
+proto fn gettimeofday(tv chars, tz chars) int
+proto fn getpid() int
+proto fn getppid() int
+proto fn getuid() int
+proto fn geteuid() int
+proto fn getgid() int
+proto fn getegid() int
+proto fn setuid(uid int) int
+proto fn setgid(gid int) int
+proto fn fork() int
+proto fn execv(path chars, argv chars) int
+proto fn execve(path chars, argv chars, envp chars) int
+proto fn execvp(file chars, argv chars) int
+proto fn _exit(code int) void
+proto fn getcwd(buf chars, size long) chars
+proto fn chdir(path chars) int
+proto fn fchdir(fd int) int
+proto fn access(path chars, mode int) int
+proto fn unlink(path chars) int
+proto fn rmdir(path chars) int
+proto fn link(oldpath chars, newpath chars) int
+proto fn symlink(target chars, linkpath chars) int
+proto fn readlink(path chars, buf chars, bufsize long) long
+proto fn rename(oldpath chars, newpath chars) int
+proto fn truncate(path chars, length long) int
+proto fn ftruncate(fd int, length long) int
+proto fn close(fd int) int
+proto fn dup(fd int) int
+proto fn dup2(oldfd int, newfd int) int
+proto fn pipe(pipefd chars) int
+proto fn lseek(fd int, offset long, whence int) long
+proto fn isatty(fd int) int
+proto fn ttyname(fd int) chars
+proto fn sleep(seconds int) int
+proto fn usleep(microseconds int) int
+proto fn gethostname(name chars, len long) int
+proto fn sethostname(name chars, len long) int
+proto fn alarm(seconds int) int
+proto fn pause() int
+proto fn sync() void
+proto fn fsync(fd int) int
+proto fn fdatasync(fd int) int
+F_OK int = 0
+X_OK int = 1
+W_OK int = 2
+R_OK int = 4
+SEEK_SET int = 0
+SEEK_CUR int = 1
+SEEK_END int = 2
+STDIN_FILENO int = 0
+STDOUT_FILENO int = 1
+STDERR_FILENO int = 2
+fn log(msg chars) void:
+   write(1, msg, strlen(msg))
+   return
+
+fn get_time() chars:
+   buf chars = heap[char](16)
+   t long = time(0 as chars)
+   tm chars = localtime(t)
+   strftime(buf, 16 as long, "%H:%M:%S", tm)
+   return buf
+
+fn log_ts(color chars, tag chars, msg chars) void:
+   tbuf chars = get_time()
+   log("[0;90m[")
+   log(tbuf)
+   log("][0m ")
+   log(color)
+   log(tag)
+   log("[0m ")
+   log(msg)
+   log("\n")
+   free(tbuf)
+   return
+
+fn log_ts_right(color chars, tag chars, msg chars) void:
+   tbuf chars = get_time()
+   log("                    [0;90m[")
+   log(tbuf)
+   log("][0m ")
+   log(color)
+   log(tag)
+   log("[0m ")
+   log(msg)
+   log("\n")
+   free(tbuf)
+   return
+
+struct SockAddr:
+   data chars
+
+fn SockAddr_init(ref self SockAddr) void:
+   self.data = heap[char](16)
+   self.data[0] = 16 as char
+   self.data[1] = 2 as char
+   return
+
+fn SockAddr_set_port(ref self SockAddr, port int) void:
+   self.data[2] = (port >> 8) as char
+   self.data[3] = (port & 255) as char
+   return
+
+fn SockAddr_set_ip(ref self SockAddr, a int, b int, c int, d int) void:
+   self.data[4] = a as char
+   self.data[5] = b as char
+   self.data[6] = c as char
+   self.data[7] = d as char
+   return
+
+fn SockAddr_delete(ref self SockAddr) void:
+   free(self.data)
+   return
+
+fn banner() void:
+   log("[0;36m")
+   log("  ██████╗██╗     ██╗███████╗███╗   ██╗████████╗\n")
+   log(" ██╔════╝██║     ██║██╔════╝████╗  ██║╚══██╔══╝\n")
+   log(" ██║     ██║     ██║█████╗  ██╔██╗ ██║   ██║   \n")
+   log(" ██║     ██║     ██║██╔══╝  ██║╚██╗██║   ██║   \n")
+   log(" ╚██████╗███████╗██║███████╗██║ ╚████║   ██║   \n")
+   log("  ╚═════╝╚══════╝╚═╝╚══════╝╚═╝  ╚═══╝   ╚═╝   \n")
+   log("[0m")
+   log("[0;90m─────────────────────────────────────────────[0m\n")
+   log("[0;36m  URA Chat Client  [0;90m│[0m connecting to [0;33m127.0.0.1:17000[0m\n")
+   log("[0;90m─────────────────────────────────────────────[0m\n\n")
+   return
+
+struct Client:
+   fd int
+   buf chars
+   rbuf chars
+
+fn Client_init(ref self Client) void:
+   self.fd = socket(2, 1, 0)
+   if self.fd < 0:
+      log("failed to create client socket\n")
+      exit(1)
+   self.buf = heap[char](1024)
+   self.rbuf = heap[char](1024)
+   return
+
+fn Client_delete(ref self Client) void:
+   close(self.fd)
+   free(self.buf)
+   free(self.rbuf)
+   return
+
+fn main() int:
+   banner()
+   addr SockAddr
+   SockAddr_set_port(ref addr, 17000)
+   SockAddr_set_ip(ref addr, 127, 0, 0, 1)
+   cli Client
+   if connect(cli.fd, addr.data, 16) < 0:
+      log_ts("[0;31m", "[client]", "connect failed")
+      return 1
+   log_ts("[0;36m", "[client]", "connected to server")
+   r int = 0
+   pid int = fork()
+   if pid == 0:
+      while True:
+         r = read(cli.fd, cli.rbuf, 1023)
+         if r <= 0:
+            log_ts("[0;31m", "[client]", "server disconnected")
+            break
+         cli.rbuf[r] = 0 as char
+         log("\r[2K")
+         log_ts("[0;33m", "[server]", cli.rbuf)
+         log("[0;36m[client][0m > ")
+      return 0
+   log("[0;36m[client][0m > ")
+   while True:
+      r = read(0, cli.buf, 1023)
+      if r <= 0:
+         break
+      cli.buf[r - 1] = 0 as char
+      write(cli.fd, cli.buf, r - 1)
+      if strcmp(cli.buf, "/exit") == 0:
+         break
+      log("[0;36m[client][0m > ")
+   SockAddr_delete(ref addr)
+   Client_delete(ref cli)
+   return 0
+
